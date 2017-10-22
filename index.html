@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <script src="index.js"></script>
     <link type="text/css" rel="stylesheet" href="style.css">
 </head>
@@ -11,15 +11,15 @@
     <h1>Pomodoro</h1>
     <div class="incrementor" id="incBreak">
         <p>Break</p>
-        <button class="button incButton">+</button>
-        <p class="incValue" id="incBreakValue">5</p>
-        <button class="button decButton">-</button>
+        <button class="button incButton" id="incBreakButton">+</button>
+        <p class="incValue" id="incBreakValue"></p>
+        <button class="button decButton" id="decBreakButton">-</button>
     </div>
     <div class="incrementor" id="incWork">
         <p>Work</p>
-        <button class="button incButton">+</button>
-        <p class="incValue" id="incWorkValue">25</p>
-        <button class="button decButton">-</button>
+        <button class="button incButton" id="incWorkButton">+</button>
+        <p class="incValue" id="incWorkValue"></p>
+        <button class="button decButton" id="decWorkButton">-</button>
     </div>
     <div id="timer">
         <h2>Session Time</h2>
