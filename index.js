@@ -3,11 +3,17 @@ document.addEventListener("DOMContentLoaded", function() {
     let incWork = document.getElementById("incWork");
     let timer = document.getElementById("timer");
     let app = {
-        "workTime" : 25,
-        "breakTime" : 5,
-        "remainTime" : 25,
+        "workTime" : 60,
+        "breakTime" : 60,
+        "remainTime" : 60,
         "state" : "workTime",
-        "pause" : true
+        "pause" : true,
+        makeTimeString() {
+            let minuteString = String(Math.floor(this.remainTime/60));
+            let secondString = String(this.remainTime%60);
+            secondString = (secondString.length === 1) ? "0" + secondString : secondString;
+            return minuteString + ":" + secondString;
+        }
     } 
 
     setupIncrementor(incBreak, app, "breakTime", timer);
@@ -25,22 +31,25 @@ function tick(timer, app) {
             app.remainTime = app[app.state] + 1;
         }
         app.remainTime = Math.max(0, app.remainTime - 1);
-        timer.querySelectorAll("h2")[0].innerHTML = app.state;
-        timer.querySelectorAll("#timerDisplay")[0].innerHTML = app.remainTime;
+        timer.querySelectorAll("h2")[0].innerHTML = (app.state === "workTime") ? "Session Time" : "Break Time";
+        timer.querySelectorAll("#timerDisplay")[0].innerHTML = app.makeTimeString();
     }
 
 }
+
+
+
 function resetTimer(timer, app, incType) {
     app.remainTime = app[incType];
-    timer.querySelectorAll("#timerDisplay")[0].innerHTML = app.remainTime;
+    timer.querySelectorAll("#timerDisplay")[0].innerHTML = app.makeTimeString();
 }
 
 function setupIncrementor(incrementor, app, incType, timer) {
     let incrementorValue = app[incType];
     incrementor.querySelectorAll(".incButton")[0].addEventListener("click", function() {
         if (app.pause) {
-            app[incType] = Math.max(0, app[incType] + 1);
-            incrementor.querySelectorAll(".incValue")[0].innerHTML = app[incType];
+            app[incType] = Math.max(0, app[incType] + 60);
+            incrementor.querySelectorAll(".incValue")[0].innerHTML = Math.floor(app[incType]/60);
             if (app.state === incType) {
                 resetTimer(timer, app, incType);
             }
@@ -48,14 +57,14 @@ function setupIncrementor(incrementor, app, incType, timer) {
     });
     incrementor.querySelectorAll(".decButton")[0].addEventListener("click", function() {
         if (app.pause) {
-            app[incType] = Math.max(0, app[incType] - 1);
-            incrementor.querySelectorAll(".incValue")[0].innerHTML = app[incType];
+            app[incType] = Math.max(0, app[incType] - 60);
+            incrementor.querySelectorAll(".incValue")[0].innerHTML = Math.floor(app[incType]/60);
             if (app.state === incType) {
                 resetTimer(timer, app, incType);
             }
         }
     });
-    incrementor.querySelectorAll(".incValue")[0].innerHTML = app[incType];
+    incrementor.querySelectorAll(".incValue")[0].innerHTML = Math.floor(app[incType]/60);
 }
 
 function setupTimer(timer, app) {
