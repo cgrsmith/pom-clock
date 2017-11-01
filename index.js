@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setupIncrementor(incWork, app, "workTime", timer);
     setupTimer(timer, app);
     let interval = setInterval(function() {
-        tick(timer, app)}, 100);
+        tick(timer, app)}, 1000);
 
 });
 
