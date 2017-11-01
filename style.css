@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Nova+Square");
+html {
+  background-color: #F2F5F5;
+  color: #675FDB; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 800px;
+  max-width: 85%;
+  margin: auto;
+  font-family: "Nova Square", sans-serif; }
+
+h1 {
+  margin-top: 60px;
+  font-size: 40px; }
+
+.incrementorPair {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 332px;
+  max-width: 90%;
+  margin: 20px 0px; }
+  .incrementorPair .incrementor {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0px;
+    width: 120px; }
+    .incrementorPair .incrementor button {
+      color: #675FDB;
+      font-family: "Nova Square", sans-serif;
+      font-size: 2rem;
+      border: 0;
+      background: none; }
+
+#timerCanvas {
+  z-index: -1;
+  height: 300px;
+  width: 300px; }
+
+.timer {
+  font-weight: bold;
+  position: relative;
+  top: -316px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 300px;
+  max-width: 90%;
+  border: 16px solid #675FDB;
+  border-radius: 50%; }
+  .timer p {
+    margin-top: 10px;
+    font-size: 2.5rem; }
